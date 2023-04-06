@@ -18,7 +18,7 @@ public class OkHttp {
     Gson gson = new Gson();
 
     public List<Chambre> chambreList() {
-        Request request = new Request.Builder().url("http://localhost:2002/pds/chambre").build();
+        Request request = new Request.Builder().url("http://localhost:8000/pds/chambre").build();
         List<Chambre> chambres = new ArrayList<>();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -40,7 +40,7 @@ public class OkHttp {
     }
 
     public List<Lit> getLits() {
-        Request request = new Request.Builder().url("http://localhost:2002/pds/lits").build();
+        Request request = new Request.Builder().url("http://localhost:8000/pds/lits").build();
         List<Lit> lits = new ArrayList<>();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -65,17 +65,16 @@ public class OkHttp {
 
 
     public static void main(String[] args) {
-        MetierJob mj = new MetierJob();
         OkHttp o = new OkHttp();
         //o.getIdentifiants();
-        //o.getLits();
+        System.out.println(o.getLitEspace("CH001"));
        // o.addService("S102","Urgence","EM005");
         //o.addIdentifiant(new Identifiant("ID0000","kldj","dasf","fs@gmail.com",666679767, Sexe.FEMELAE,"admin",mj.finfByid(1)));
 
     }
 
     public List<Identifiant> getIdentifiants() {
-        Request request = new Request.Builder().url("http://localhost:2002/pds/identifiants").build();
+        Request request = new Request.Builder().url("http://localhost:8000/pds/identifiants").build();
         List<Identifiant> identifiants = new ArrayList<>();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -106,7 +105,7 @@ public class OkHttp {
         RequestBody requestBody = RequestBody.create(json, JSON);
         System.out.println(requestBody);
         Request request = new Request.Builder()
-                .url("http://localhost:2002/pds/addIdentifiant")
+                .url("http://localhost:8000/pds/addIdentifiant")
                 .post(requestBody)
                 .build();
 
@@ -122,7 +121,7 @@ public class OkHttp {
     }
 
     public List<Service> getServices() {
-        Request request = new Request.Builder().url("http://localhost:2002/pds/services").build();
+        Request request = new Request.Builder().url("http://localhost:8000/pds/services").build();
         List<Service> services = new ArrayList<>();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -145,7 +144,7 @@ public class OkHttp {
     }
 
     public List<Emplacement> getEmplacements() {
-        Request request = new Request.Builder().url("http://localhost:2002/pds/emplacement").build();
+        Request request = new Request.Builder().url("http://localhost:8000/pds/emplacement").build();
         List<Emplacement> emplacements = new ArrayList<>();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -168,7 +167,7 @@ public class OkHttp {
     }
 
     public void deleteIdentifient(String codeIdentifiant) {
-        String url = "http://localhost:2002/pds/DeleteIdentifient" + codeIdentifiant;
+        String url = "http://localhost:8000/pds/DeleteIdentifient" + codeIdentifiant;
         Request request = new Request.Builder().url(url).delete().build();
         try {
             Response response = okHttpClient.newCall(request).execute();
@@ -187,7 +186,7 @@ public class OkHttp {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://localhost:2002/pds/addService/" + code + "/" + nomS + "/" + codeE )
+                .url("http://localhost:8000/pds/addService/" + code + "/" + nomS + "/" + codeE )
                 .put(formBody)
                 .build();
         System.out.println(request);
@@ -200,6 +199,25 @@ public class OkHttp {
             throw new RuntimeException(e);
         }
     }
+    public Lit getLitEspace(String code) {
+        Request request = new Request.Builder().url("http://localhost:8000/pds/litsEspace" + code).build();
+        Lit lit = null;
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+            JsonElement jsonElement = gson.fromJson(response.body().charStream(), JsonElement.class);
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            System.out.println(jsonObject);
+            lit = gson.fromJson(jsonObject, Lit.class);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return lit;
+    }
+
 
 
 }

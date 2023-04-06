@@ -2,10 +2,7 @@ package ma.uiass.eia.pds.backend.Metier;
 
 import ma.uiass.eia.pds.backend.Dao.EspaceDaoImp;
 import ma.uiass.eia.pds.backend.Dao.LitDaoImp;
-import ma.uiass.eia.pds.backend.Entite.EtatLit;
-import ma.uiass.eia.pds.backend.Entite.EtatPhysique;
-import ma.uiass.eia.pds.backend.Entite.Lit;
-import ma.uiass.eia.pds.backend.Entite.TypeLit;
+import ma.uiass.eia.pds.backend.Entite.*;
 
 import java.util.List;
 
@@ -30,5 +27,15 @@ public class MetierLit {
         Lit l= daoL.findById(id);
         daoL.update(l,etat);
 
+    }
+    public List<Lit> getLitEspace(String code) {
+
+        Espace e=daoE.findByCode(code);
+        return (daoL.getlitsEspace(e.getEspace_id()));
+
+    }
+    public static void main(String [] args){
+        MetierLit mt=new MetierLit();
+        System.out.println(mt.getLits());
     }
 }

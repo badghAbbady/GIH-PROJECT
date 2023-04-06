@@ -29,11 +29,11 @@ public class Espace implements Serializable {
     @Column(name="quantite")
     private int quantite;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "espace")
     private List<Lit> lits ;
 
-    @JsonIgnore
     @JoinColumn(name = "Service_id",referencedColumnName = "Id")
     @ManyToOne
     private Service service;

@@ -1,6 +1,7 @@
 package ma.uiass.eia.pds.backend.Dao;
 
 
+import ma.uiass.eia.pds.backend.Entite.Espace;
 import ma.uiass.eia.pds.backend.Entite.EtatLit;
 import ma.uiass.eia.pds.backend.Entite.Lit;
 import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
@@ -12,6 +13,8 @@ import java.util.List;
 
 public class LitDaoImp implements ILitDao{
     private EntityManager em;
+
+    private EspaceDaoImp daoE=new EspaceDaoImp();
 
 
     public LitDaoImp() {
@@ -96,6 +99,19 @@ public class LitDaoImp implements ILitDao{
             e.printStackTrace();
         }
 
+    }
+    @Override
+    public List<Lit> getlitsEspace(int ide) {
+        Espace es=daoE.findById(ide);
+        TypedQuery<Lit> query = em.createQuery("SELECT l FROM Lit l WHERE l.espace= :es", Lit.class);
+        query.setParameter("es", es);
+        return query.getResultList();
+    }
+
+
+    public static void main(String [] args){
+        LitDaoImp lt=new LitDaoImp();
+        System.out.println(lt.getAll());
     }
 }
 

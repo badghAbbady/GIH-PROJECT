@@ -3,10 +3,7 @@ package ma.uiass.eia.pds.frontend.Test.mainChefService;
 import ma.uiass.eia.pds.frontend.Test.component.Header;
 import ma.uiass.eia.pds.frontend.Test.component.Menu;
 import ma.uiass.eia.pds.frontend.Test.event.EventMenuSelected;
-import ma.uiass.eia.pds.frontend.Test.formChefService.Form_1;
-import ma.uiass.eia.pds.frontend.Test.formChefService.Form_2;
-import ma.uiass.eia.pds.frontend.Test.formChefService.Form_3;
-import ma.uiass.eia.pds.frontend.Test.formChefService.Form_Home;
+import ma.uiass.eia.pds.frontend.Test.formChefService.*;
 import ma.uiass.eia.pds.frontend.Test.swing.PanelBorder;
 
 
@@ -17,7 +14,7 @@ public class MainChefService extends javax.swing.JFrame {
 
 
     private Form_Home home;
-    private Form_1 form1;
+    private Form11 form1;
     private Form_2 form2;
     private Form_3 form3;
 
@@ -28,7 +25,7 @@ public class MainChefService extends javax.swing.JFrame {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         home = new Form_Home();
-        form1 = new Form_1();
+        form1 = new Form11();
         form2 = new Form_2();
         form3 = new Form_3();
 

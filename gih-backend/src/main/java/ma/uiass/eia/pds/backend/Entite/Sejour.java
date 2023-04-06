@@ -1,5 +1,7 @@
 package ma.uiass.eia.pds.backend.Entite;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -13,12 +15,16 @@ public class Sejour implements Serializable {
     @Column(name="Id")
     private int sejour_id;
 
+    @JsonIgnore
     @Column(name="date_entree")
     private Date date_entre;
 
+    @JsonIgnore
     @Column(name="date_sortie")
     private Date date_sortie;
 
+
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "lit_id", referencedColumnName = "Id")
     private Lit lit;

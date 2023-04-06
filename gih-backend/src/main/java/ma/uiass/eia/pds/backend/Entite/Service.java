@@ -22,7 +22,7 @@ public class Service implements Serializable {
     @OneToMany(mappedBy ="service")
     private List<Espace> list ;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy ="service")
     private List<Lit> listLit ;
 

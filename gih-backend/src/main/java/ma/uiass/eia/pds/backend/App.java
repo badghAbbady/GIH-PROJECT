@@ -20,7 +20,7 @@ import java.util.Date;
 public class App
 {
     public static void main( String[] args ) {
-        MetierEmplacement metierEmplacement = new MetierEmplacement();
+       /* MetierEmplacement metierEmplacement = new MetierEmplacement();
         metierEmplacement.create("EM001","batiment1","E01");
         metierEmplacement.create("EM002","batiment A","E01");
         metierEmplacement.create("EM003","batiment B","E01");
@@ -109,7 +109,12 @@ public class App
         // System.out.println(metierChambre.getAll().get(0));
         //System.out.println(new java.util.Date().getTime());
 
+*/
 
+        MetierLit mtl=new MetierLit();
+       /* mtl.addLit("LI009",TypeLit.soin,EtatLit.DISPONIBLE,EtatPhysique.BonEtat,"CH003");
+        mtl.addLit("LI009",TypeLit.soin,EtatLit.DISPONIBLE,EtatPhysique.BonEtat,"CH004");*/
+        mtl.updateEtat(1,EtatLit.DISPONIBLE);
 
 
 

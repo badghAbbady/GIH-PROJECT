@@ -49,7 +49,18 @@ public class LitControlor {
     }*/
 
 
+    @GET
+    @Path("litsEspace{codeEspace}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Lit> getLitEspace(@PathParam("codeEspace") String code) {
+        return metierlit.getLitEspace(code);
+    }
 
+    public static void main(String [] args){
+        LitControlor lt=new LitControlor();
+        System.out.println(lt.getLitEspace("CH001"));
+
+    }
 
 
 
