@@ -15,5 +15,5 @@ Pour l’affectation des lits , on va choisir un lit du<combobox ‘num lit> et 
 pour le bon fonctionnement il faut d'abord créer une base de données vide et lui donner un nom puit vous pouvez remplir la base de données en important le script qu'on a envoyé sans oublier que ce nom ainsi le mot de passe de la base de données et le username doivent etre changées dans le fichier hibernate.cfg.xml et persistence.xml ,ces fichiers se trouvent dans le package ressources.
 
 
-
+finalement pour afficher l'IHM il faut "runner" la classe MainChefService qui se trouve dans gih-frontend/src/main/java/ma/uiass/eia/pds/frontend/Test/mainChefService/MainChefService.java
 
