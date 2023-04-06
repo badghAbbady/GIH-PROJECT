@@ -19,9 +19,5 @@ public class ChambreControlor {
         return metierChambre.getAllChambre();
     }
 
-    public static void main(String[] args) {
-        ChambreControlor c = new ChambreControlor();
-        List<Chambre> list = c.getMyList();
-        System.out.println(list);
-    }
+
 }

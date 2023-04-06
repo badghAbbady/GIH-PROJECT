@@ -33,10 +33,6 @@ public class IdentifiantControlor {
         return metierIdentifiant.getAll();
     }
 
-    public static void main(String[] args) {
-        IdentifiantControlor i = new IdentifiantControlor();
-        System.out.println(i.getMyLits());
-    }
 
     @POST
     @Path("addIdentifiant")

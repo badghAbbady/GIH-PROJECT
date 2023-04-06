@@ -8,6 +8,7 @@ import ma.uiass.eia.pds.backend.HibernateUtility.HibernateUtility;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -109,9 +110,39 @@ public class LitDaoImp implements ILitDao{
     }
 
 
-    public static void main(String [] args){
-        LitDaoImp lt=new LitDaoImp();
-        System.out.println(lt.getAll());
+
+
+
+
+    public void updateEspace(Lit d, Espace espace) {
+        EntityTransaction et = null;
+        d.setEspace(espace);
+        try {
+            et = em.getTransaction();
+            if (!et.isActive()) {
+                et.begin();
+            }
+            em.merge(d);
+            et.commit();
+        }catch(Exception e){
+            if (et != null) {
+                et.rollback();
+            }
+            e.printStackTrace();
+        }
     }
+
+    @Override
+    public Lit findByCode(String codeL) {
+        TypedQuery<Lit> query = em.createQuery("FROM Lit WHERE codeLit = :nom", Lit.class);
+        query.setParameter("nom", codeL);
+        try {
+            return query.getSingleResult();
+        } catch (NonUniqueResultException e) {
+            return null;
+        }
+    }
+
 }
+
 

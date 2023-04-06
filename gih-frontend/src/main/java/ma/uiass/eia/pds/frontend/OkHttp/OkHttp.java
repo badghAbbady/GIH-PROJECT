@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import ma.uiass.eia.pds.backend.Entite.*;
 import ma.uiass.eia.pds.backend.Metier.MetierJob;
 import okhttp3.*;
@@ -67,7 +68,7 @@ public class OkHttp {
     public static void main(String[] args) {
         OkHttp o = new OkHttp();
         //o.getIdentifiants();
-        System.out.println(o.getLitEspace("CH001"));
+        System.out.println(o.getLitByCodeEspace("CH001"));
        // o.addService("S102","Urgence","EM005");
         //o.addIdentifiant(new Identifiant("ID0000","kldj","dasf","fs@gmail.com",666679767, Sexe.FEMELAE,"admin",mj.finfByid(1)));
 
@@ -199,23 +200,42 @@ public class OkHttp {
             throw new RuntimeException(e);
         }
     }
-    public Lit getLitEspace(String code) {
+    public List<Lit> getLitByCodeEspace(String code) {
         Request request = new Request.Builder().url("http://localhost:8000/pds/litsEspace" + code).build();
-        Lit lit = null;
+        List<Lit> lits = null;
         try {
             Response response = okHttpClient.newCall(request).execute();
             if (!response.isSuccessful()) {
                 throw new IOException(String.valueOf(response));
             }
             JsonElement jsonElement = gson.fromJson(response.body().charStream(), JsonElement.class);
-            JsonObject jsonObject = jsonElement.getAsJsonObject();
-            System.out.println(jsonObject);
-            lit = gson.fromJson(jsonObject, Lit.class);
+            JsonArray jsonArray = jsonElement.getAsJsonArray();
+            System.out.println(jsonArray);
+            lits = gson.fromJson(jsonArray, new TypeToken<List<Lit>>(){}.getType());
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return lit;
+        return lits;
+    }
+
+    public void affecteLitEspace(String codeL, String codeE){
+        FormBody formBody = new FormBody.Builder()
+                .build();
+
+        Request request = new Request.Builder()
+                .url("http://localhost:8000/pds/affecterLitCh/"+codeL+"/"+codeE )
+                .post(formBody)
+                .build();
+        System.out.println(request);
+        try {
+            Response response = okHttpClient.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException(String.valueOf(response));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

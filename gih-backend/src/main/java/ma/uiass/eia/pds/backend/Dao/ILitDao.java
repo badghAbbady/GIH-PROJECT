@@ -7,4 +7,6 @@ import java.util.List;
 public interface ILitDao extends Dao<Lit>{
 
     public List<Lit> getlitsEspace(int ide);
+
+    public Lit findByCode(String codeL);
 }

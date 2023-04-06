@@ -194,7 +194,7 @@ public class Form11 extends JPanel {
 
     private void loadLits(DefaultTableModel tableModel, String code) {
         tableModel.setRowCount(0);
-        List<Lit> lits = lt.getLitEspace(code);
+        List<Lit> lits = o.getLitByCodeEspace(code);
         for (Lit c : lits) {
             Object[] row = new Object[]{c.getCode(), null, c.getEtatPhysique(), c.getTypeLit()};
             TableActionEvent event = new TableActionEvent() {

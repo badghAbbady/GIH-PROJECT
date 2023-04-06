@@ -56,10 +56,13 @@ public class LitControlor {
         return metierlit.getLitEspace(code);
     }
 
-    public static void main(String [] args){
-        LitControlor lt=new LitControlor();
-        System.out.println(lt.getLitEspace("CH001"));
 
+    @POST
+    @Path("/affecterLitCh/{codeL}/{codeC}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void update(@PathParam("codeL") String codeL,@PathParam("codeC") String codeC){
+        metierlit.updateLitEspace(codeL, codeC);
     }
 
 

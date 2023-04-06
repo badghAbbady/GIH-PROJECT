@@ -38,4 +38,10 @@ public class MetierLit {
         MetierLit mt=new MetierLit();
         System.out.println(mt.getLits());
     }
+
+    public void updateLitEspace(String codeL,String codeE){daoL.updateEspace(daoL.findByCode(codeL),daoE.findByCode(codeE));}
+
+    public Lit findbycode(String code){
+        return daoL.findByCode(code);
+    }
 }
