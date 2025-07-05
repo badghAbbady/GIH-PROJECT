@@ -1,19 +1,46 @@
-# pds
-Monsieur il faut télécharger les images qui se trouve dans gih-frontend/src/main/java/ma/uiass/eia/pds/frontend
-puis modifier leur path dans la classe gih-frontend/src/main/java/ma/uiass/eia/pds/frontend/Test/formChefService/TableActionCellRender.java avec le path ou vous avez télécharger les images.
-pour Badr il a travaillé sur consulter lits. Il faut accéder à consulter lit et puis séléctionner une chambre pour accéder aux différents lits de cette chambre.
-l'état disponible est représenté par un lit vert, et occupé par unt lit rouge.
-il a travaillé aussi sur la liason de l'état avec le séjour tel que l'etat se met à jour dés que un lit devient occupé;
-le fichier de la base de donnée est celui "pds Base Donnée Badr et Jihad.rar" vous pouvez l'importer.
+# 🏥 GIH – Smart Hospital Management System
 
-pour jihad:"affecter lit"
-Dans cette interface nous allons pouvoir affecter un lit à une chambre et visualiser les lits qui concerne chaque chambre ;
-Dans un premier lieu on peut choisir une chambre dans le <combobox> approprié “Chambres   , et quand on clique sur le <button >« Ok » les lits de cette chambre sont affichés et par conséquent les codes de ces lits sont enregistrer dans un combobox dit “num lit .
-Pour l’affectation des lits , on va choisir un lit du<combobox ‘num lit> et ainsi choisir une chambre où nous devons affecter le lit et on clique sur le <button affecter> lit et par suite le lit s’affiche dans le tableau de cette chambre en cliquant sur « Ok » une autre fois
+**GIH (Gestion Intelligente d’Hôpital)** is a desktop-based hospital management system developed as an academic project. The platform allows healthcare staff to manage patients, appointments, inventory, and medical records in a structured and secure way. The goal was to simulate a realistic environment and workflow within a modern hospital infrastructure.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend:** Java (Object-Oriented Design)
+- **Frontend:** Java Swing (Desktop GUI)
+- **Database:** MySQL
+- **Testing:** JUnit
+- **Documentation:** UML diagrams
+
+---
+
+## 🚀 Features
+
+- 🩺 Patient management (creation, update, search, history)
+- 📅 Appointment scheduling and management
+- 💊 Inventory management for medication and equipment
+- 👨‍⚕️ User authentication and role-based access control (doctor/admin/nurse)
+- 📑 Real-time data persistence and reporting
+- ⚙️ Clean MVC architecture with reusable components
+- ✅ Unit testing with JUnit for core business logic
+
+---
+
+## 🎯 Project Objectives
+
+- Simulate a real-world hospital management platform
+- Apply Agile Scrum methodology (weekly sprints, backlog grooming)
+- Practice software engineering best practices: design patterns, modularity, code quality
+- Learn and apply collaborative workflows with Git and task tracking tools
 
 
-pour le bon fonctionnement il faut d'abord créer une base de données vide et lui donner un nom puit vous pouvez remplir la base de données en important le script qu'on a envoyé sans oublier que ce nom ainsi le mot de passe de la base de données et le username doivent etre changées dans le fichier hibernate.cfg.xml et persistence.xml ,ces fichiers se trouvent dans le package ressources.
+---
 
+## 👨‍💻 Contributors
 
-finalement pour afficher l'IHM il faut "runner" la classe MainChefService qui se trouve dans gih-frontend/src/main/java/ma/uiass/eia/pds/frontend/Test/mainChefService/MainChefService.java
+- **Badr El Abbady** – Full-Stack Developer
+- **Jihad HIBAT ALLAH** – Full-Stack Developer
 
+---
+
+*This project was developed over 12 months as part of an engineering program, with a strong focus on software design, team collaboration, and delivery of a maintainable product.*
